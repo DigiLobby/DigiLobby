@@ -55,6 +55,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Blazor SSR for server side web page rendering
 * Blazor Web assembly for in browser UI interactivity
 * Controllers for API endpoints
+* XUnit for application testing
 * Docker for application packaging
 * GitHub actions for CI CD
     
