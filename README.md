@@ -22,6 +22,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * No security vulnerabilities in the source code, frameworks, platforms used
 * Encrypt data at rest and in-transit
 * Source code based on Clean architecture and SOLID principles
+* No sensitive data like api keys, passwords to be checked into source control
 * Easy to use
 * Encourage two-factor authentication
 * Permissions/Privileges provided to User/Actor roles should follow principle of least privilege
