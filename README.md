@@ -20,7 +20,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 # Non-functional requirements
 * Application should be self-hostable on-premise and on cloud
 * No security vulnerabilities in the application code
-* Easy to use
+* Source code should use Clean architecture and SOLID principles
+* Application should be easy to use
 * Two-factor authentication
 * Support OAuth 2.0 providers, Active Directory for authentication
 * Auditability and reconciliation capabilities
@@ -56,6 +57,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Blazor SSR for server side web page rendering
 * Blazor Web assembly for in browser UI interactivity
 * Controllers for API endpoints
+* Mediatr for application commands and queries handling
+* Fluent validation for request validation
 * XUnit for application testing
 * Docker for application packaging
 * GitHub actions for CI CD
