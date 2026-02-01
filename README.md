@@ -27,7 +27,14 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Permissions/Privileges provided to User/Actor roles should follow principle of least privilege
 * Support OAuth 2.0 providers, Active Directory for authentication
 * Auditability and reconciliation capabilities. Logs should contain user identifiers and device identifiers wherever possible.
-* GDPR compliance
+* Data Security
+  * Notify resident if his visitor information is viewed by other application users
+  * Option to purge visit data after 180 days
+  * Show only resident name to other users to avoid exposure of personal information
+  * Option to store only visitor face image/biometric data hash to avoid storing PII
+  * Option to remove visitor's personal information upon visitor's request
+  * Option to take vistor consent (via physical signature or email) to store personal and visit data
+  * GDPR compliance
 * Observability (dashboards and alarms) for application health and performance
 * Support horizontal scalability (provide options for distributed cache)
 * Support multi-tenancy after the application is matured for single tenant setup
