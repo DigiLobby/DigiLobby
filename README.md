@@ -18,15 +18,16 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Reports for visitor activity analysis
 
 # Non-functional requirements
-* Application should be self-hostable on-premise and on cloud
-* No security vulnerabilities in the application code
-* Application should encrypt data at rest and in-transit
-* Source code should use Clean architecture and SOLID principles
-* Application should be easy to use
-* Two-factor authentication
+* Self-hostable on-premise and on cloud
+* No security vulnerabilities in the source code, frameworks, platforms used
+* Encrypt data at rest and in-transit
+* Source code based on Clean architecture and SOLID principles
+* Easy to use
+* Encourage two-factor authentication
+* Permissions/Privileges provided to User/Actor roles should follow principle of least privilege
 * Support OAuth 2.0 providers, Active Directory for authentication
-* Auditability and reconciliation capabilities. Logs should contain use identifiers and device identifiers wherever possible.
-* Application should be GDPR compliant
+* Auditability and reconciliation capabilities. Logs should contain user identifiers and device identifiers wherever possible.
+* GDPR compliance
 * Observability (dashboards and alarms) for application health and performance
 * Support horizontal scalability (provide options for distributed cache)
 * Support multi-tenancy after the application is matured for single tenant setup
