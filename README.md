@@ -19,8 +19,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 
 # Interfaces
 * Email
- * Application notifications
- * Visitor approvals by residents
+  * Application notifications
+  * Visitor approvals by residents
 * Web application
   * Dashboards
   * User management
@@ -30,5 +30,16 @@ Visitor Management System for office spaces. Can also be used for residential sp
   * Visitor check-in via lobby personnel
   * Visitor check-in via pre-approved invite
   * Visitor check-out by lobby personnel
+ 
+# Technology stack 
+* Dotnet for backend
+* PostgreSQL for database in production environment 
+* SQLite for database in testing environment 
+* Entity Framework for ORM
+* Identity framework for user authentication, authorization, session management, cookies, account management
+* Cookies for session persistence in browser
+* Blazor SSR for server side web page rendering
+* Blazor Web assembly for in browser UI interactivity
+* Controllers for API endpoints
     
 
