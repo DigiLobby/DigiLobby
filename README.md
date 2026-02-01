@@ -47,6 +47,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
  
 # Technology stack 
 * Dotnet web application as backend system
+* HTTP as application communication protocol
 * PostgreSQL for database in production environment 
 * SQLite for database in testing environment 
 * Entity Framework for ORM
