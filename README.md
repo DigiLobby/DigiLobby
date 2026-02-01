@@ -64,5 +64,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * XUnit for application testing
 * Docker for application packaging
 * GitHub actions for CI CD
-    
 
+# TODOs
+* Define the entities and relationships
+* Define the logical data model for entities
+* Define UI screens
