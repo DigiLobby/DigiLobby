@@ -24,7 +24,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Application should be easy to use
 * Two-factor authentication
 * Support OAuth 2.0 providers, Active Directory for authentication
-* Auditability and reconciliation capabilities
+* Auditability and reconciliation capabilities. Logs should contain use identifiers and device identifiers wherever possible
 * Observability (dashboards and alarms) for application health and performance
 * Support horizontal scalability (provide options for distributed cache)
 * Support multi-tenancy after the application is matured for single tenant setup
