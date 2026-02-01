@@ -32,8 +32,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
   * Option to purge visit data after 180 days
   * Show only resident name to other users to avoid exposure of personal information
   * Option to store only visitor face image/biometric data hash to avoid storing PII
-  * Option to remove visitor's personal information upon visitor's request
-  * Option to take vistor consent (via physical signature or email) to store personal and visit data
+  * Option for application admin (data security officer) to remove visitor's personal information and visit information
+  * Option to take vistor consent (via physical signature or email) to store PII data and visit data
   * GDPR compliance
 * Observability (dashboards and alarms) for application health and performance
 * Support horizontal scalability (provide options for distributed cache)
