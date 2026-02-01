@@ -19,8 +19,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 
 # Interfaces
 * Email
- * application notifications
- * visitor approvals by residents
+ * Application notifications
+ * Visitor approvals by residents
 * Web application
   * Dashboards
   * User management
