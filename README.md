@@ -77,3 +77,5 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Define the entities and relationships
 * Define the logical data model for entities
 * Define UI screens
+* Define project scope exclusions to avoid scope creep
+* Define application processes as user stories
