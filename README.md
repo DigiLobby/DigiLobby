@@ -17,10 +17,22 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Visitor check-out by lobby personnel
 * Reports for visitor activity analysis
 
+# Non-functional requirements
+* Application should be self-hostable on-premise and on cloud
+* No security vulnerabilities in the application code
+* Easy to use
+* Two-factor authentication
+* Support OAuth 2.0 providers, Active Directory for authentication
+* Auditability and reconciliation capabilities
+* Observability (dashboards and alarms) for application health and performance
+* Support horizontal scalability (provide options for distributed cache)
+* Support multi-tenancy after the application is matured for single tenant setup
+
 # Interfaces
 * Email
   * Application activity notifications
   * Visitor approvals notifications
+  * User account management notifications
 * Web application
   * Dashboards
   * Notifications
@@ -34,7 +46,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
   * Visitor check-out by lobby personnel
  
 # Technology stack 
-* Dotnet for backend
+* Dotnet web application as backend system
 * PostgreSQL for database in production environment 
 * SQLite for database in testing environment 
 * Entity Framework for ORM
@@ -43,5 +55,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Blazor SSR for server side web page rendering
 * Blazor Web assembly for in browser UI interactivity
 * Controllers for API endpoints
+* Docker for application packaging
+* GitHub actions for CI CD
     
 
