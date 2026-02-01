@@ -10,7 +10,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 
 # Functional requirements
 * User/actor authentication
-* Pre-approval of visits by residents/employees
+* Pre-approval of visits by residents
 * Visitor check-in based on pre-approval
 * Visitor check-in based on instant resident approval
 * Visitor check-in based on lobby personnel approval
@@ -19,13 +19,15 @@ Visitor Management System for office spaces. Can also be used for residential sp
 
 # Interfaces
 * Email
-  * Application notifications
-  * Visitor approvals by residents
+  * Application activity notifications
+  * Visitor approvals notifications
 * Web application
   * Dashboards
+  * Notifications
+  * Approvals
   * User management
   * Reports viewing and management
-  * Visitor invite generation
+  * Visitor invite CRUD
   * Visitor check-in resident approval
   * Visitor check-in via lobby personnel
   * Visitor check-in via pre-approved invite
