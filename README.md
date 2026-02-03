@@ -57,6 +57,19 @@ Visitor Management System for office spaces. Can also be used for residential sp
   * Visitor check-in via pre-approved invite
   * Visitor check-out by lobby personnel
  
+# UI screens
+
+## User management
+* User login page
+* Users CRUD pages
+
+## Invite management
+* Invite generation page
+* Invite listing page
+* Invite editing page
+* Invite cancellation page
+* Invite checked-in success display page
+ 
 # Technology stack 
 * Dotnet web application as backend system
 * HTTP as application communication protocol
@@ -80,3 +93,4 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Define UI screens
 * Define project scope exclusions to avoid scope creep
 * Define application processes as user stories
+* Define how to store notifications for efficient querying and also define retention plan
