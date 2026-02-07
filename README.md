@@ -60,15 +60,32 @@ Visitor Management System for office spaces. Can also be used for residential sp
 # UI screens
 
 ## User management
-* User login page
-* Users CRUD pages
+* Users Create, View, Update (password, email, username, phone, disable), Delete pages - actors: SuperAdmin, ClusterAdmin
+
+## User self service
+* User forgot password page - actor: AppUser
+* User login page - actor: AppUser
+* Email update page - actor: AppUser
+* Password change page - actor: AppUser
+* Mobile number update page - actor: AppUser
 
 ## Invite management
-* Invite generation page
-* Invite listing page
-* Invite editing page
-* Invite cancellation page
-* Invite checked-in success display page
+* Invite generation page - actors: Resident, SuperAdmin, ClusterAdmin
+* Invite listing page - actors: Resident, SuperAdmin, ClusterAdmin
+* Invite editing page - actors: Resident
+* Invite cancellation page - actors: Resident
+* Invite checked-in success display page - actors: Resident, SuperAdmin, ClusterAdmin
+
+## Visit Check-in / Check-out
+* Instant visit check-in approval by resident page - actors: Resident
+* Instant visit check-in approval by lobby personnel page - actors: LobbyPersonnel
+* Invite based visit check-in page - actors: LobbyPersonnel
+* Visitor check-out page - actors: LobbyPersonnel
+
+## Reports
+* My Visitors page- actor: AppUser
+* Resident Visitors page - actor: SuperAdmin, ClusterAdmin
+* All Visitors page - actor: SuperAdmin, ClusterAdmin
  
 # Technology stack 
 * Dotnet web application as backend system
