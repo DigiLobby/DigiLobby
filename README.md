@@ -62,6 +62,13 @@ Visitor Management System for office spaces. Can also be used for residential sp
 ## User management
 * Users Create, View, Update (password, email, username, phone, disable), Delete pages - actors: SuperAdmin, ClusterAdmin
 
+## Buildings management
+* Buildings CRUD - actors: SuperAdmin
+* Clusters CRUD - actors: SuperAdmin
+* Add/remove Building from Cluster - actors: Superadmin
+* Add/remove Clusters to users with ClusterAdmin roles - actors: Superadmin
+* Add/remove residents to building - actors: SuperAdmin, ClusterAdmin
+
 ## User self service
 * User forgot password page - actor: AppUser
 * User login page - actor: AppUser
