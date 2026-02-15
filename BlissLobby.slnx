@@ -1,3 +1,10 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="App/App.csproj" Id="fd68bd74-298a-4229-a5c6-d039a1b09691" />
+  <Project Path="Domain/Domain.csproj" Id="ccb5cc88-4a21-4d70-b154-5a6108b7ed54" />
+  <Project Path="Infra/Infra.csproj" Id="5a7d58a3-5ff5-49a8-a70f-c127a6efbff5" />
   <Project Path="Web/Web.csproj" />
 </Solution>
