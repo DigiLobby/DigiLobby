@@ -118,4 +118,7 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Define project scope exclusions to avoid scope creep
 * Define application processes as user stories
 * Define how to store notifications for efficient querying and also define retention plan
-* Mention usage of blazor datatables to render paginated lists 
+* Mention usage of blazor datatables to render paginated lists
+
+## References
+* blazor ssr forms - https://youtu.be/SwmDg4Rmq3U?si=IMH0l6Wcpk5otgza
