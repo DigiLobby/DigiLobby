@@ -122,3 +122,6 @@ Visitor Management System for office spaces. Can also be used for residential sp
 
 ## References
 * blazor ssr forms - https://youtu.be/SwmDg4Rmq3U?si=IMH0l6Wcpk5otgza
+* fluent validation in blazor forms with blazilla - https://docs.fluentvalidation.net/en/latest/blazor.html , https://blazor.loresoft.com/
+* CSRF mitigation with Antiforgery token in blazor EditForm component - https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-10.0#antiforgery-support
+* XSS mitigated by default in blazor - https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-10.0#antiforgery-support
