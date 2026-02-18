@@ -111,6 +111,127 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * Docker for application packaging
 * GitHub actions for CI CD
 
+# Entities and relationships
+
+## AuditableEntity
+* Description: Base class for all entities in the system that require auditing information. Contains common fields for tracking creation and modification details.
+### Fields
+* Id (Guid, PK)
+* CreatedAt (DateTimeOffset)
+* CreatedBy (Guid, FK to Users table)
+* LastModifiedAt (DateTimeOffset)
+* LastModifiedBy (Guid, FK to Users table)
+
+## User
+* Table: Users
+* Description: Represents a user of the application, which can be a SuperAdmin, ClusterAdmin, Resident, or LobbyPersonnel. Contains authentication and contact information, as well as role and association with clusters and buildings.
+* Relationships:
+  * A User can be associated with zero or one Cluster (ClusterId)
+  * A User can be associated with zero or one Building (BuildingId)
+* A User can have one Role (SuperAdmin, ClusterAdmin, Resident, LobbyPersonnel)
+* User entity will be extended from IdentityUser<Guid> class provided by ASP.NET Identity framework to leverage built-in authentication and authorization features. This will also provide additional fields like SecurityStamp, ConcurrencyStamp, etc. for enhanced security and concurrency handling.
+
+### Fields
+* Id (Guid, PK)
+* Username (string, unique)
+* Email (string, unique)
+* PasswordHash (string)
+* PhoneNumber (string)
+* IsDisabled (bool)
+* Role (enum: SuperAdmin, ClusterAdmin, Resident, LobbyPersonnel)
+* ClusterId (Guid, FK to Clusters table, nullable)
+* BuildingId (Guid, FK to Buildings table, nullable)
+
+## Building
+* Table: Buildings
+* Description: Represents a building (physical premises) within the system. A building can be part of a cluster and can have multiple residents and lobby personnel associated with it.
+* Relationships:
+  * A Building can belong to zero or one Cluster (ClusterId)
+  * A Building can have multiple Users (residents and lobby personnel) associated with it
+
+### Fields
+* Id (Guid, PK)
+* Name (string, unique)
+* Address (string)
+* ClusterId (Guid, FK to Clusters table, nullable)
+
+## Cluster
+* Table: Clusters
+* Description: Represents a cluster (group of buildings) within the system. A cluster can have multiple buildings and multiple users (ClusterAdmins) associated with it.
+* Relationships:
+  * A Cluster can have multiple Buildings associated with it
+  * A Cluster can have multiple Users (ClusterAdmins) associated with it
+### Fields
+* Id (Guid, PK)
+* Name (string, unique)
+* Description (string)
+
+## ClusterAdmin
+* Table: ClusterAdmins
+* Description: Represents the association between a ClusterAdmin user and a Cluster. This entity is used to manage many-to-many relationships between ClusterAdmins and Clusters, as a ClusterAdmin can manage multiple Clusters and a Cluster can have multiple ClusterAdmins.
+* Relationships:
+  * A ClusterAdmin can be associated with one Cluster (ClusterId)
+  * A ClusterAdmin can be associated with one User (UserId) who has the ClusterAdmin role
+### Fields
+* Id (Guid, PK)
+* UserId (Guid, FK to Users table)
+* ClusterId (Guid, FK to Clusters table)
+
+## Invite
+* Table: Invites
+* Description: Represents an invitation for a visitor to visit a resident. Contains details about the visitor, the resident they are visiting, the scheduled visit time, and the status of the invite.
+* Relationships:
+  * An Invite is associated with one Resident (ResidentId)
+  * An Invite can have one Visit (VisitId) if the visitor has checked in
+### Fields
+* Id (Guid, PK)
+* VisitorName (string)
+* VisitorEmail (string)
+* VisitorPhoneNumber (string)
+* ResidentId (Guid, FK to Users table where Role is Resident)
+* ScheduledVisitTime (DateTimeOffset)
+* Status (enum: Pending, Approved, Rejected, Cancelled)
+* VisitId (Guid, FK to Visits table, nullable)
+
+## Visit
+* Table: Visits
+* Description: Represents a visit by a visitor to a resident. Contains details about the visitor, the resident they are visiting, the check-in and check-out times, and the status of the visit.
+* Relationships:
+  * A Visit is associated with one Resident (ResidentId)
+  * A Visit can be associated with one Invite (InviteId) if the visit was based on a pre-approved invite
+  * A Visit can be checked in by one LobbyPersonnel (CheckedInBy) and checked out by one LobbyPersonnel (CheckedOutBy)
+  * A Visit can have multiple Notifications associated with it
+### Fields
+* Id (Guid, PK)
+* VisitorName (string)
+* VisitorEmail (string)
+* VisitorPhoneNumber (string)
+* ResidentId (Guid, FK to Users table where Role is Resident)
+* CheckInTime (DateTimeOffset, nullable)
+* CheckOutTime (DateTimeOffset, nullable)
+* Status (enum: Pending, CheckedIn, CheckedOut, Cancelled)
+* InviteId (Guid, FK to Invites table, nullable)
+* CheckedInBy (Guid, FK to Users table where Role is LobbyPersonnel, nullable)
+* CheckedOutBy (Guid, FK to Users table where Role is LobbyPersonnel, nullable)
+* Notifications (collection of Notification entities)
+* Note: VisitorName, VisitorEmail, and VisitorPhoneNumber fields are stored in the Visit entity to capture the visitor's information at the time of the visit, even if the invite was based on a pre-approved invite. This allows for accurate record-keeping and reporting of visits, as well as providing necessary information for notifications and audits.
+
+## Notification
+* Table: Notifications
+* Description: Represents a notification related to a visit. Contains details about the type of notification, the recipient user, the associated visit, and whether the notification has been read.
+* Relationships:
+  * A Notification is associated with one Visit (VisitId)
+  * A Notification is associated with one User (RecipientId) who receives the notification
+### Fields
+* Id (Guid, PK)
+* VisitId (Guid, FK to Visits table)
+* RecipientId (Guid, FK to Users table)
+* Type (enum: VisitCheckIn, VisitCheckOut, InviteApproval, InviteRejection, etc.)
+* Message (string)
+* IsRead (bool)
+* CreatedAt (DateTimeOffset)
+* Note: The Notification entity is designed to store notifications related to visits, such as visit check-ins, check-outs, invite approvals, and rejections. The RecipientId field allows for efficient querying of notifications for a specific user, while the VisitId field allows for tracking notifications related to a specific visit. The IsRead field can be used to filter unread notifications for users, and the CreatedAt field can be used for sorting and retention purposes. A retention plan can be implemented to automatically delete notifications after a certain period (e.g., 365 days) to manage storage and comply with data retention policies.
+
 # TODOs
 * Define the entities and relationships
 * Define the logical data model for entities
