@@ -4,7 +4,11 @@ namespace Domain.Entities.Common;
 
 public class BaseEntity
 {
-    public int Id { get; set; }
+    public string Id { get; set; }
+    public BaseEntity()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
 
     private readonly List<BaseEvent> _domainEvents = new();
 
