@@ -1,6 +1,6 @@
-﻿namespace Domain.Entities.Common;
+﻿namespace Domain.Common;
 
-public class AuditableEntity : BaseEntity
+public class BaseAuditableEntity : BaseEntity
 {
     public string? CreatedBy { get; set; } = null!;
 

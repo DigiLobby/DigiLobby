@@ -1,8 +1,8 @@
-﻿using Domain.Entities.Common;
+﻿using Domain.Common;
 
 namespace Domain.Entities;
 
-public class Building : AuditableEntity
+public class Building : BaseAuditableEntity
 {
     public required string ClusterId { get; set; }
     public Cluster Cluster { get; set; } = null!;

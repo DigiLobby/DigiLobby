@@ -2,22 +2,15 @@
 
 namespace App.Common.Behaviours;
 
-public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRequest>> validators) : IPipelineBehavior<TRequest, TResponse>
     where TRequest : notnull
 {
-    private readonly IEnumerable<IValidator<TRequest>> _validators;
-
-    public ValidationBehaviour(IEnumerable<IValidator<TRequest>> validators)
-    {
-        _validators = validators;
-    }
-
     public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
-        if (_validators.Any())
+        if (validators.Any())
         {
             var validationResults = await Task.WhenAll(
-                _validators.Select(v =>
+                validators.Select(v =>
                     v.ValidateAsync(new ValidationContext<TRequest>(request), cancellationToken)));
 
             var failures = validationResults
@@ -29,6 +22,6 @@ public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TReque
                 throw new ValidationException(failures);
         }
 
-        return await next();
+        return await next(cancellationToken);
     }
 }
