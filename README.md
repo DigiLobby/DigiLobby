@@ -138,8 +138,8 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * PasswordHash (string)
 * PhoneNumber (string)
 * IsDisabled (bool)
+* DisplayName (string)
 * Role (enum: SuperAdmin, ClusterAdmin, Resident, LobbyPersonnel)
-* ClusterId (Guid, FK to Clusters table, nullable)
 * BuildingId (Guid, FK to Buildings table, nullable)
 
 ## Building
