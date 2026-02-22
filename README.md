@@ -246,3 +246,4 @@ Visitor Management System for office spaces. Can also be used for residential sp
 * fluent validation in blazor forms with blazilla - https://docs.fluentvalidation.net/en/latest/blazor.html , https://blazor.loresoft.com/
 * CSRF mitigation with Antiforgery token in blazor EditForm component - https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-10.0#antiforgery-support
 * XSS mitigated by default in blazor - https://learn.microsoft.com/en-us/aspnet/core/blazor/forms/?view=aspnetcore-10.0#antiforgery-support
+* Radzen blazor starter - https://blazor.radzen.com/get-started , https://github.com/radzenhq/radzen-blazor/blob/master/RadzenBlazorDemos.Host/Program.cs

@@ -1,4 +1,5 @@
 ﻿using App.Common.Interfaces;
+using Radzen;
 using Web.Services;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,8 @@ public static class DependencyInjection
 
         // Add services to the container.
         builder.Services.AddRazorComponents();
+               //.AddInteractiveWebAssemblyComponents();
+        builder.Services.AddRadzenComponents();
 
     }
 }

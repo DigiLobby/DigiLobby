@@ -1,11 +1,20 @@
+using Infra.Data;
 using Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddApplicationServices();
+builder.AddInfrastructureServices();
+builder.AddWebServices();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    await app.InitialiseDatabaseAsync();
+}
+else
 {
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
@@ -18,5 +27,6 @@ app.UseAntiforgery();
 
 app.MapStaticAssets();
 app.MapRazorComponents<Application>();
+    //.AddInteractiveWebAssemblyRenderMode();
 
 app.Run();
