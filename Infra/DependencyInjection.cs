@@ -19,26 +19,37 @@ public static class DependencyInjection
         var connectionString = builder.Configuration.GetConnectionString("CleanArchitectureDb");
         Guard.Against.Null(connectionString, message: "Connection string 'CleanArchitectureDb' not found.");
 
+        var dbType = builder.Configuration.GetValue<string>("DbType")?.ToLower();
+
         builder.Services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         builder.Services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
 
         builder.Services.AddDbContext<ApplicationDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
-#if (UseSqlite)
-            options.UseSqlite(connectionString);
-#elif(UsePostgreSQL)
-            options.UseNpgsql(connectionString);
-#endif
+            switch (dbType)
+            {
+                case "sqlite":
+                    options.UseSqlite(connectionString);
+                    break;
+                case "postgresql":
+                    options.UseNpgsql(connectionString);
+                    break;
+                default:
+                    break;
+            }
             options.ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
         });
 
 #if (UseAspire)
-#if (UsePostgreSQL)
-        builder.EnrichNpgsqlDbContext<ApplicationDbContext>();
-#elif (UseSqlServer)
-        builder.EnrichSqlServerDbContext<ApplicationDbContext>();
-#endif
+    switch (dbType)
+            {
+                case "postgresql":
+                    builder.EnrichNpgsqlDbContext<ApplicationDbContext>();
+                    break;
+                default:
+                    break;
+            }
 #endif
 
         builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
@@ -71,6 +82,15 @@ public static class DependencyInjection
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddSignInManager()
             .AddDefaultTokenProviders();
+
+        builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
+            .AddCookie(IdentityConstants.ApplicationScheme, options =>
+            {
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.LogoutPath = "/Identity/Account/Logout";
+                // configure other cookie options as needed
+            });
 #endif
 
         builder.Services.AddSingleton(TimeProvider.System);
