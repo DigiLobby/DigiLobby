@@ -56,18 +56,6 @@ public static class DependencyInjection
 
         builder.Services.AddScoped<ApplicationDbContextInitialiser>();
 
-#if (UseApiOnly)
-        builder.Services.AddAuthentication()
-            .AddBearerToken(IdentityConstants.BearerScheme);
-
-        builder.Services.AddAuthorizationBuilder();
-
-        builder.Services
-            .AddIdentityCore<ApplicationUser>()
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>()
-            .AddApiEndpoints();
-#else
         //builder.Services
         //    .AddDefaultIdentity<ApplicationUser>()
         //    .AddRoles<IdentityRole>()
@@ -91,7 +79,6 @@ public static class DependencyInjection
                 options.LogoutPath = "/Identity/Account/Logout";
                 // configure other cookie options as needed
             });
-#endif
 
         builder.Services.AddSingleton(TimeProvider.System);
         builder.Services.AddTransient<IIdentityService, IdentityService>();
