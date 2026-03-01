@@ -7,6 +7,7 @@
   <Project Path="App/App.csproj" Id="fd68bd74-298a-4229-a5c6-d039a1b09691" />
   <Project Path="Domain/Domain.csproj" Id="ccb5cc88-4a21-4d70-b154-5a6108b7ed54" />
   <Project Path="Infra/Infra.csproj" Id="5a7d58a3-5ff5-49a8-a70f-c127a6efbff5" />
-  <Project Path="SampleApp/SampleApp.csproj" Id="011ceb8a-ed69-4182-978a-bf01754a3cfa" />
+  <Project Path="SampleBlazorApp/SampleBlazorApp.csproj" Id="011ceb8a-ed69-4182-978a-bf01754a3cfa" />
+  <Project Path="SampleRazorApp/SampleRazorApp.csproj" Id="41b0057d-4ce4-4208-b53f-ffd5ab94168b" />
   <Project Path="Web/Web.csproj" />
 </Solution>
